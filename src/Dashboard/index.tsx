@@ -3,22 +3,15 @@ import Api from '../Services/api';
 import { FiChevronRight } from 'react-icons/fi';
 import { Title, Form, Repository } from './style';
 import logo from '../assets/logo.svg';
+import { Repo } from '../Models/Repo';
 
-interface Repository  {
-  full_name: string,
-  description: string,
-  owner: {
-    login: string,
-    avatar_url: string
-  }
-}
 const Dashboard: React.FC = () => {
   const [newRepo, setNewRepo] = useState('');
-  const [respositores, setRespositores] = useState<Repository []>([]);
+  const [respositores, setRespositores] = useState<Repo[]>([]);
 
  async function handleAddRespository(event: FormEvent<HTMLFormElement>): Promise<void> {
    event.preventDefault();
-   const response = await Api.get<Repository>(`repos/${newRepo}`);
+   const response = await Api.get<Repo>(`repos/${newRepo}`);
 
    const res = response.data;
    setRespositores([...respositores, res]);
