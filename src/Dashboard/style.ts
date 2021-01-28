@@ -60,7 +60,7 @@ export const Repository = styled.div`
       transform: translateX(10px);
     }
 
-    a + a {
+    & + a {
       margin-top: 16px;
     }
     img {
